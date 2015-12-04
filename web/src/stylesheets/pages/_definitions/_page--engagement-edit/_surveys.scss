@@ -16,16 +16,17 @@
 		}
 	}
 
-	a.survey-item-name {
+	.survey-item-name {
 		font-size: 16px;
 		font-family: $font-open-sans-semi-bold;
+		color: $color--theme-accent;
+	}
 
-		&:after {
-			@include glyphAdd($html-entity-link);
-			vertical-align: baseline;
-			padding-left: 5px;
-			text-decoration: none;
-		}
+	a.survey-item-name:after {
+		@include glyphAdd($html-entity-link);
+		vertical-align: baseline;
+		padding-left: 5px;
+		text-decoration: none;
 	}
 
 	.survey-item-data-count {
