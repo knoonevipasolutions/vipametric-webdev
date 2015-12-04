@@ -39,3 +39,15 @@
 		@include glyphOverride($html-entity-download);
 	}
 }
+
+.btn-results {
+	&:before {
+		@include glyphOverride($html-entity-graph);
+	}
+}
+
+.btn-edit {
+	&:before {
+		@include glyphOverride($html-entity-edit);
+	}
+}
