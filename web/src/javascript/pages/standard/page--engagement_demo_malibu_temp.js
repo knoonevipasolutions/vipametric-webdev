@@ -47,8 +47,8 @@ jQuery(function($) {
 
             //Append extra action buttons to post-event survey
             $externalSurveyActions
-                .append($('<a class="btn btn-glyph-only btn-xsmall btn-view" href="/demo2/survey/results" title="View Results"><span class="btn-text">View Results</span></a>'))
-                .append($('<a class="btn btn-glyph-only btn-xsmall btn-results" href="#" title="Manage Results"><span class="btn-text">Manage Results</span></a>'));
+                .append($('<a class="btn btn-glyph-only btn-xsmall btn-results" href="/demo2/survey/results" title="View Results"><span class="btn-text">View Results</span></a>'))
+                .append($('<a class="btn btn-glyph-only btn-xsmall btn-edit" href="#" title="Manage Results"><span class="btn-text">Manage Results</span></a>'));
         }
 
 
