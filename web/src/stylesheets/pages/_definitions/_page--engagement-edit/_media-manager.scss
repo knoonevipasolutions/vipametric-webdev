@@ -91,4 +91,55 @@
 			transform: translate(-50%,-50%);
 		}
 	}
+
+	&.malibu {
+		.media-manager-previewer {
+			background-color: $color-grey-55;
+			position: relative;
+			margin: 10px 0;
+			height: auto;
+			width: auto;
+			padding: 5px 23px;
+			border-radius: 0;
+			border: 1px solid $color-grey-dd;
+
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				top: 5px;
+				bottom: 5px;
+				width: 12px;
+				background: $color-grey-55;
+				transform: none;
+				background-image: linear-gradient($color-white 33%, $color-grey-55 35%);
+				background-size: 15px 25px;
+				background-repeat: repeat-y;
+			}
+
+			&:before {
+				background-position: left;
+				left: 5px;
+			}
+
+			&:after {
+				background-position: right;
+				right: 5px;
+			}
+
+			.media-manager-preview {
+				margin: 5px auto;
+				z-index: 999;
+				position: relative;
+
+				.media-manager-preview-render {
+					width: 100px;
+					height: 100px;
+					background-size: cover;
+					margin: 0 auto;
+					background-position: center center;
+				}
+			}
+		}
+	}
 }

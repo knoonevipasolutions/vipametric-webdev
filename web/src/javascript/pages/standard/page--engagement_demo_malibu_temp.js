@@ -2,16 +2,26 @@ jQuery(function($) {
     var $engagementCont = $('.view-engagement'),
         $engagementName = $engagementCont.find('.engagement-name'),
         $preEventSurveyCon = $('.pre-event-survey'),
-        $rsvpSurveyCon = $('rsvp'),
+        $rsvpSurveyCon = $('.rsvp'),
         $inMarketSurveyCon = $('.in-market-survey'),
         $postEventSurveyCon = $('.post-event-survey'),
         $leadEmailCon = $('.lead-email'),
         $leadPhoneCon = $('.lead-phone'),
         $leadSocialCon = $('.lead-social'),
-        $leadAddressCon = $('.lead-address');
+        $leadAddressCon = $('.lead-address'),
+        $mediaManager = $(".section.media");
 
 
     if ($engagementName.text() == 'Malibu Example') {
+
+        function editMediaManager() {
+            var $pictureManagerContent = $mediaManager.find(".picture-manager > .media-manager-previewer");
+            var $videoManager = $mediaManager.find(".video-manager");
+
+            $videoManager.addClass("malibu");
+
+            $videoManager.find("> .media-manager-previewer").html($pictureManagerContent.html());
+        }
 
         function resetSurveyCounts() {
             var $preEventSurveyCount = $preEventSurveyCon.find(".survey-item-data-count"),
@@ -37,16 +47,20 @@ jQuery(function($) {
             $leadAddressCount.html('487');
         }
 
-        function changePostEventSurvey() {
-            var $externalSurveyHeader= $postEventSurveyCon.find(".survey-item-header"),
-                $externalSurveyHeaderName = $('<div class="survey-item-name">Post Event Survey</div>'),
-                $externalSurveyActions = $postEventSurveyCon.find(".survey-item-actions");
+        function changeSurvey($con, name) {
+            var $surveyHeader= $con.find(".survey-item-header"),
+                $surveyHeaderName = $('<div class="survey-item-name">' + name + '</div>'),
+                $surveyActions = $con.find(".survey-item-actions");
 
-            //Remove Link from post-event survey name
-            $externalSurveyHeader.html($externalSurveyHeaderName);
-
+            if (name == "In-Market Survey") {
+                $surveyHeader.find("a").attr("href", "/demo2/survey");
+            }
+            else {
+                //Remove Link from post-event survey name
+                $surveyHeader.html($surveyHeaderName);
+            }
             //Append extra action buttons to post-event survey
-            $externalSurveyActions
+            $surveyActions
                 .append($('<a class="btn btn-glyph-only btn-xsmall btn-results" href="/demo2/survey/results" title="View Results"><span class="btn-text">View Results</span></a>'))
                 .append($('<a class="btn btn-glyph-only btn-xsmall btn-edit" href="#" title="Manage Results"><span class="btn-text">Manage Results</span></a>'));
         }
@@ -54,8 +68,11 @@ jQuery(function($) {
 
         resetSurveyCounts();
         resetLeadCounts();
-        changePostEventSurvey();
-
+        changeSurvey($preEventSurveyCon, "Pre-Event Survey");
+        changeSurvey($rsvpSurveyCon, "RSVP");
+        changeSurvey($inMarketSurveyCon, "In-Market Survey");
+        changeSurvey($postEventSurveyCon, "Post Event Survey");
+        editMediaManager();
 
     }
 
