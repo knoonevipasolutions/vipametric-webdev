@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
-      <paths name="VipaMetric Live">
+      <paths name="ActivationHUB Live">
         <serverdata>
           <mappings>
             <mapping deploy="www.vipametric.com\Web\Design" local="$PROJECT_DIR$/web/build/design" web="/" />
@@ -12,11 +12,11 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="VipaSuite QA">
+      <paths name="ActivationHUB QA">
         <serverdata>
           <mappings>
-            <mapping deploy="vipametric-qa.venturetech.net/Web/Javascript" local="$PROJECT_DIR$/web/src/javascript" web="/" />
-            <mapping deploy="vipametric-qa.venturetech.net/Web/Stylesheets" local="$PROJECT_DIR$/web/stylesheets/build" web="/" />
+            <mapping deploy="vipametric-qa.venturetech.net/Web/Javascript" local="$PROJECT_DIR$/web/build/javascript" web="/" />
+            <mapping deploy="vipametric-qa.venturetech.net/Web/Stylesheets" local="$PROJECT_DIR$/web/build/stylesheets" web="/" />
             <mapping deploy="vipametric-qa.venturetech.net/Web/Design" local="$PROJECT_DIR$/web/src/design" web="/" />
           </mappings>
         </serverdata>
