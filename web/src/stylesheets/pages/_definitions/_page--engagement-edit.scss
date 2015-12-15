@@ -36,24 +36,24 @@ $spacing-metric: 15px;
     margin-top: 15px;
   }
 
-  //&-group {
-  //  margin-right: 15px;
-  //  margin-bottom: 15px;
-  //  display: inline-block;
-  //  vertical-align: top;
-  //  min-width: 220px;
-  //  max-width: 100%;
-  //}
+  &-group {
+    margin-right: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+    vertical-align: top;
+    min-width: 220px;
+    max-width: 100%;
+  }
 
-  //&-group.default-group {
-  //  display: block;
-	//
-  //  .prop {
-  //    display: inline-block;
-  //    vertical-align: top;
-  //    margin-right: 15px;
-  //  }
-  //}
+  &-group.default-group {
+    display: block;
+
+    .prop {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 15px;
+    }
+  }
 
   @include breakpoint($bp-mobile-landscape) {
     &-header-actions {
@@ -69,19 +69,19 @@ $spacing-metric: 15px;
         }
       }
     }
-		//
-    //&-group {
-    //  margin-right: 50px;
-    //  margin-bottom: 50px;
-    //}
-		//
-    //&-group.default-group {
-    //  margin-right: 0;
-		//
-    //  .prop {
-    //    margin-right: 50px;
-    //  }
-    //}
+
+    &-group {
+      margin-right: 50px;
+      margin-bottom: 50px;
+    }
+
+    &-group.default-group {
+      margin-right: 0;
+
+      .prop {
+        margin-right: 50px;
+      }
+    }
   }
 }
 
@@ -135,11 +135,11 @@ $spacing-metric: 15px;
   display: block;
 }
 
-//.metric-container,
-//.prop-group {
-//  display: inline-block;
-//  vertical-align: top;
-//}
+.metric-container,
+.prop-group {
+  display: inline-block;
+  vertical-align: top;
+}
 
 
 .metric-bucket,

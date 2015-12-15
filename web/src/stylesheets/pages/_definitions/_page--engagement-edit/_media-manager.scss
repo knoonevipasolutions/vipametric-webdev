@@ -107,15 +107,16 @@
 		}
 
 		.media-manager-previewer {
-			background-color: $color-grey-55;
+			background-color: $color-grey-aa;
 			position: relative;
 			margin: 10px auto;
 			height: auto;
 			width: 140px;
 			padding: 5px 23px;
 			border-radius: 0;
-			border: 0;
 			transform: rotate(3deg);
+			border: 1px solid #aaa;
+			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
 
 			&:before,
 			&:after {
@@ -124,9 +125,9 @@
 				top: 5px;
 				bottom: 5px;
 				width: 12px;
-				background: $color-grey-55;
+				background: $color-grey-aa;
 				transform: none;
-				background-image: linear-gradient($color-grey-55 33%, $color-grey-77 55%, $color-white 35%);
+				background-image: linear-gradient($color-grey-aa 33%, $color-grey-aa 55%, $color-white 35%);
 				background-size: 15px 25px;
 				background-repeat: repeat-y;
 			}
