@@ -15,12 +15,27 @@ jQuery(function($) {
     if ($engagementName.text() == 'Malibu Example') {
 
         function editMediaManager() {
-            var $pictureManagerContent = $mediaManager.find(".picture-manager > .media-manager-previewer");
             var $videoManager = $mediaManager.find(".video-manager");
+            var $videoManagerPreviewer = $videoManager.find("> .media-manager-previewer");
+            var pictureData = [
+                {
+                    src: '/_resources/dyn/files/27471za2b9e4b6/_fn/IMG_3367.JPG'
+                },
+                {
+                    src: '/_resources/dyn/files/27489z2bfa704b/_fn/IMG_3368.JPG'
+                }
+            ];
+            var pictureHtml = $.map(pictureData, function (el, idx) {
+                var imageStyle = 'style="background-image: url(' + el.src + ');"';
+                return '<div class="media-manager-preview"><div class="media-manager-preview-render" ' + imageStyle + ' /></div>';
+            }).join('');
+
+
 
             $videoManager.addClass("malibu");
 
-            $videoManager.find("> .media-manager-previewer").html($pictureManagerContent.html());
+            $('<div class="circle"></div>').insertBefore($videoManagerPreviewer);
+            $videoManagerPreviewer.empty().append(pictureHtml);
         }
 
         function resetSurveyCounts() {
