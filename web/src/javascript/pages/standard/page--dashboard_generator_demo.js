@@ -28,7 +28,6 @@ function createHtmlStructure() {
 
     $(document.createElement("div")).addClass("dash-section").addClass("social-analytics").appendTo(".dash-container");
     $(document.createElement("div")).addClass("dash-section-header").addClass("social-analytics-header").text("Social Analytics").appendTo("div.social-analytics");
-    $('<iframe src="//keyhole.co/widget/BXrv5B/timeline/1" frameborder="0" height="390" width="550"></iframe>').appendTo('div.social-analytics');
 
     $(document.createElement("div")).addClass("dash-section").addClass("multi-chart-wrapper").addClass("consumer-purchase-motivators-wrapper").appendTo(".dash-container");
     $(document.createElement("div")).addClass("consumer-purchase-motivators").addClass("column-chart").appendTo("div.consumer-purchase-motivators-wrapper");

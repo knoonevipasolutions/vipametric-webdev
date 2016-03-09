@@ -1,0 +1,29 @@
+.social-analytics {
+    .social-category {
+        margin: 10px 0 20px;
+
+        .value {
+            font-family: $font-open-sans-semi-bold;
+            font-size: 40px;
+        }
+    }
+
+    @include breakpoint($bp-tablets-portrait) {
+        .social-category {
+            display: inline-block;
+            width: 50%;
+            padding: 0 10px;
+        }
+    }
+
+    @include breakpoint($bp-tablets-landscape) {
+        .social-category {
+            width: 25%;
+            padding: 0;
+
+            + .social-category {
+                padding-left: 15px;
+            }
+        }
+    }
+}
