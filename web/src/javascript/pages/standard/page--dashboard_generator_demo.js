@@ -1,5 +1,6 @@
 jQuery(function($) {
     var $socialContainer;
+<<<<<<< HEAD
 
     var API_KEY = 'a417ee49d987911d',
         TRACKER = 'vv8Vqk',
@@ -62,6 +63,64 @@ jQuery(function($) {
         $(document.createElement("div")).addClass("right-account").addClass("pie-chart").appendTo("div.consumer-purchase-motivators-wrapper .dash-section-content");
     }
 
+=======
+
+    var API_KEY = 'a417ee49d987911d',
+    TRACKER = 'vv8Vqk';
+
+    var pollCount = 0;
+
+    function pollForSocial($counts) {
+        setTimeout(function(){
+            if ($(".social-analytics").length || pollCount > 500) {
+                $socialContainer = $(".social-analytics");
+                displayCounts($counts);
+            }
+            else {
+                pollForSocial($counts);
+            }
+        },50);
+        pollCount++;
+    }
+
+    function createHtmlStructure() {
+        if ($(".dash-container").length === 0 ) {
+            $(document.createElement("div")).addClass("dash-container").appendTo(".e-content");
+        }
+
+        $(".dash-container").empty();
+
+        $(document.createElement("div")).addClass("dash-section").addClass("brand-totals").addClass("circular-chart-wrapper").appendTo(".dash-container");
+        $(document.createElement("div")).addClass("dash-section-header").addClass("brand-totals-header").text("Brand Totals").appendTo("div.brand-totals");
+        //$(document.createElement("div")).addClass("bottle-sales").addClass("gauge-chart").appendTo("div.brand-totals");
+        $(document.createElement("div")).addClass("events-completed").addClass("gauge-chart").appendTo("div.brand-totals");
+        //$(document.createElement("div")).addClass("samples-given").addClass("gauge-chart").appendTo("div.brand-totals");
+        $(document.createElement("div")).addClass("impressions").addClass("gauge-chart").appendTo("div.brand-totals");
+
+
+        $(document.createElement("div")).addClass("dash-section").addClass("full-program-results-container").appendTo(".dash-container");
+        $(document.createElement("div")).addClass("full-program-results").addClass("table-wrapper").appendTo("div.full-program-results-container");
+
+
+        $(document.createElement("div")).addClass("dash-section").addClass("price-matrix").appendTo(".dash-container");
+
+        $(document.createElement("div")).addClass("dash-section").addClass("consumer-demographics").addClass("circular-chart-wrapper").appendTo(".dash-container");
+        $(document.createElement("div")).addClass("dash-section-header").addClass("consumer-demographics-header").text("Consumer Demographics").appendTo("div.consumer-demographics");
+        $(document.createElement("div")).addClass("age").addClass("pie-chart").appendTo("div.consumer-demographics");
+        $(document.createElement("div")).addClass("gender").addClass("pie-chart").appendTo("div.consumer-demographics");
+        $(document.createElement("div")).addClass("language").addClass("pie-chart").appendTo("div.consumer-demographics");
+        $(document.createElement("div")).addClass("background").addClass("pie-chart").appendTo("div.consumer-demographics");
+
+        $(document.createElement("div")).addClass("dash-section").addClass("social-analytics").appendTo(".dash-container");
+        $(document.createElement("div")).addClass("dash-section-header").addClass("social-analytics-header").text("Social Analytics").appendTo("div.social-analytics");
+
+        $(document.createElement("div")).addClass("dash-section").addClass("multi-chart-wrapper").addClass("consumer-purchase-motivators-wrapper").appendTo(".dash-container");
+        $(document.createElement("div")).addClass("consumer-purchase-motivators").addClass("column-chart").appendTo("div.consumer-purchase-motivators-wrapper");
+
+        $(document.createElement("div")).addClass("right-account").addClass("pie-chart").appendTo("div.consumer-purchase-motivators-wrapper");
+    }
+
+>>>>>>> Changes to keyhole widget on dashboard
     function noData() {
         if ($(".dash-container").length === 0 ) {
             $(document.createElement("div")).addClass("dash-container").appendTo(".e-content");
@@ -231,6 +290,7 @@ jQuery(function($) {
                     enabled: false
                 },
                 showInLegend: true
+<<<<<<< HEAD
             }
         }
     };
@@ -329,6 +389,106 @@ jQuery(function($) {
                 enabled: false
             }
 
+=======
+            }
+        }
+    };
+
+    function createCharts() {
+        $("div.events-completed").highcharts(Highcharts.merge(gaugeOptions, {
+            yAxis: {
+                min: 0,
+                max: 10,
+                title: {
+                    text: "Events"
+                }
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            series: [
+                {
+                    name: "Completed",
+                    data: [0],
+                    dataLabels: {
+                        format: '<div style="text-align:center"><span style="font-size:25px;color:' + ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                        '<span style="font-size:12px;color:silver">Completed</span></div>'
+                    },
+                    tooltip: {
+                        valueSuffix: ' Events'
+                    }
+                }
+            ]
+        }));
+
+        $("div.impressions").highcharts(Highcharts.merge(gaugeOptions, {
+            yAxis: {
+                min: 0,
+                max: 10,
+                title: {
+                    text: "Impressions"
+                }
+            },
+
+            credits: {
+                enabled: false
+            },
+
+            series: [
+                {
+                    name: "Impressions",
+                    data: [0],
+                    dataLabels: {
+                        format: '<div style="text-align:center"><span style="font-size:25px;color:' + ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                        '<span style="font-size:12px;color:silver">Impressions</span></div>'
+                    },
+                    tooltip: {
+                        valueSuffix: ' Impressions'
+                    }
+                }
+            ]
+        }));
+
+        $("div.consumer-demographics div.age").highcharts(Highcharts.merge(semiCircleDonutOptions, {
+            title: {
+                text: "Age"
+            },
+
+            credits: {
+                enabled: false
+            }
+        }));
+
+        $("div.consumer-demographics div.gender").highcharts(Highcharts.merge(semiCircleDonutOptions, {
+            title: {
+                text: "Gender"
+            },
+
+            credits: {
+                enabled: false
+            }
+        }));
+
+        $("div.consumer-demographics div.language").highcharts(Highcharts.merge(semiCircleDonutOptions, {
+            title: {
+                text: "Language"
+            },
+            credits: {
+                enabled: false
+            }
+        }));
+
+        $("div.consumer-demographics div.background").highcharts(Highcharts.merge(semiCircleDonutOptions, {
+            title: {
+                text: "Background"
+            },
+            credits: {
+                enabled: false
+            }
+
+>>>>>>> Changes to keyhole widget on dashboard
         }));
 
         $("div.consumer-purchase-motivators").highcharts(Highcharts.merge(columnOptions, {
@@ -494,6 +654,7 @@ jQuery(function($) {
                     updateChartsAndTables(result);
 
                     loadingDialog(false);
+<<<<<<< HEAD
 
                     aggregateCounts(result.keyhole);
                 },
@@ -506,6 +667,20 @@ jQuery(function($) {
                 error: function (xhr, status, error) {
                     console.log( "Ajax request failed." );
 
+=======
+
+                    aggregateCounts(result.keyhole);
+                },
+                data: {
+                    access_token: API_KEY,
+                    track: TRACKER,
+                    type: "timeline",
+                    range: 30
+                },
+                error: function (xhr, status, error) {
+                    console.log( "Ajax request failed." );
+
+>>>>>>> Changes to keyhole widget on dashboard
                     loadingDialog(false)
                 }
             }
@@ -539,17 +714,23 @@ jQuery(function($) {
         var $counts = obj;
 
         $.each($counts, function(key, value){
+<<<<<<< HEAD
             key = key.charAt(0).toUpperCase() + key.slice(1);
+=======
+>>>>>>> Changes to keyhole widget on dashboard
             var $value = $("<div />").addClass("value").text(value);
             var $wrap = $('<div class="social-category"><div class="title">' + key + '</div>');
             $wrap.prepend($value);
             $socialContainer.append($wrap);
         });
+<<<<<<< HEAD
 
         $('.social-category').wrapAll($("<div class='wrap'/>"));
 
 
         $(document.createElement("a")).addClass("more").attr('href', 'http://keyhole.co/realtime/' + TRACKER + '/' + HASHTAG).attr('target', '_blank').text('View All Data').appendTo("div.social-analytics");
+=======
+>>>>>>> Changes to keyhole widget on dashboard
     }
 
     function parseNum(num) {
