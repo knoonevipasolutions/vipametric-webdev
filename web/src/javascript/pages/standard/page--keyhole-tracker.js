@@ -1,8 +1,8 @@
 jQuery(function($) {
     var $socialContainer;
 
-    var API_KEY = '7f7c8308489cc485',
-        TRACKER = 'aDhA8L',
+    var API_KEY = 'a417ee49d987911d',
+        TRACKER = 'vv8Vqk',
         API_URL = 'http://api.keyhole.co/1.1/get';
 
     var pollCount = 0;
@@ -69,7 +69,6 @@ jQuery(function($) {
                 range: 30
             },
             success: function(data) {
-                console.log("Success!");
                 aggregateCounts(data);
             }
         });
