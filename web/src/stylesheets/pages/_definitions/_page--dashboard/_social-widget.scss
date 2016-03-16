@@ -5,8 +5,10 @@
         background-color: $color--theme-accent;
         color: $color-white;
         padding: 5px 10px 6px;
-        border-radius: 3px;
         display: inline-block;
+        position: absolute;
+        top: 15px;
+        left: 0;
     }
 
     .more {
@@ -18,6 +20,11 @@
             content: $html-entity-rarr;
             margin-left: 5px;
         }
+    }
+
+    .wrap {
+        padding: 10px 30px;
+        margin-top: 10px;
     }
 
     .social-category {

@@ -29,13 +29,16 @@ jQuery(function($) {
 
         $(document.createElement("div")).addClass("dash-section").addClass("brand-totals").addClass("circular-chart-wrapper").appendTo(".dash-container");
         $(document.createElement("div")).addClass("dash-section-header").addClass("brand-totals-header").text("Brand Totals").appendTo("div.brand-totals");
+        $(document.createElement("div")).addClass("dash-section-content").appendTo("div.brand-totals");
         //$(document.createElement("div")).addClass("bottle-sales").addClass("gauge-chart").appendTo("div.brand-totals");
-        $(document.createElement("div")).addClass("events-completed").addClass("gauge-chart").appendTo("div.brand-totals");
-        //$(document.createElement("div")).addClass("samples-given").addClass("gauge-chart").appendTo("div.brand-totals");
-        $(document.createElement("div")).addClass("impressions").addClass("gauge-chart").appendTo("div.brand-totals");
+        $(document.createElement("div")).addClass("events-completed").addClass("gauge-chart").appendTo("div.brand-totals .dash-section-content");
+        //$(document.createElement("div")).addClass("samples-given").addClass("gauge-chart").appendTo("div.brand-totals .dash-section-content");
+        $(document.createElement("div")).addClass("impressions").addClass("gauge-chart").appendTo("div.brand-totals .dash-section-content");
 
         $(document.createElement("div")).addClass("dash-section").addClass("social-analytics").appendTo(".dash-container");
         $(document.createElement("div")).addClass("dash-section-header").addClass("social-analytics-header").text("Social Analytics").appendTo("div.social-analytics");
+        $(document.createElement("div")).addClass("dash-section-content").appendTo("div.social-analytics");
+        $(document.createElement("div")).addClass("social-analytics-hashtag").text(HASHTAG).appendTo("div.social-analytics .dash-section-content");
 
         $(document.createElement("div")).addClass("dash-section").addClass("full-program-results-container").appendTo(".dash-container");
         $(document.createElement("div")).addClass("full-program-results").addClass("table-wrapper").appendTo("div.full-program-results-container");
@@ -45,15 +48,18 @@ jQuery(function($) {
 
         $(document.createElement("div")).addClass("dash-section").addClass("consumer-demographics").addClass("circular-chart-wrapper").appendTo(".dash-container");
         $(document.createElement("div")).addClass("dash-section-header").addClass("consumer-demographics-header").text("Consumer Demographics").appendTo("div.consumer-demographics");
-        $(document.createElement("div")).addClass("age").addClass("pie-chart").appendTo("div.consumer-demographics");
-        $(document.createElement("div")).addClass("gender").addClass("pie-chart").appendTo("div.consumer-demographics");
-        $(document.createElement("div")).addClass("language").addClass("pie-chart").appendTo("div.consumer-demographics");
-        $(document.createElement("div")).addClass("background").addClass("pie-chart").appendTo("div.consumer-demographics");
+        $(document.createElement("div")).addClass("dash-section-content").appendTo("div.consumer-demographics");
+        $(document.createElement("div")).addClass("age").addClass("pie-chart").appendTo("div.consumer-demographics .dash-section-content");
+        $(document.createElement("div")).addClass("gender").addClass("pie-chart").appendTo("div.consumer-demographics .dash-section-content");
+        $(document.createElement("div")).addClass("language").addClass("pie-chart").appendTo("div.consumer-demographics .dash-section-content");
+        $(document.createElement("div")).addClass("background").addClass("pie-chart").appendTo("div.consumer-demographics .dash-section-content");
 
         $(document.createElement("div")).addClass("dash-section").addClass("multi-chart-wrapper").addClass("consumer-purchase-motivators-wrapper").appendTo(".dash-container");
-        $(document.createElement("div")).addClass("consumer-purchase-motivators").addClass("column-chart").appendTo("div.consumer-purchase-motivators-wrapper");
+        $(document.createElement("div")).addClass("dash-section-header").addClass("multi-chart-header").text("Additional Data").appendTo("div.consumer-purchase-motivators-wrapper");
+        $(document.createElement("div")).addClass("dash-section-content").appendTo("div.consumer-purchase-motivators-wrapper");
+        $(document.createElement("div")).addClass("consumer-purchase-motivators").addClass("column-chart").appendTo("div.consumer-purchase-motivators-wrapper .dash-section-content");
 
-        $(document.createElement("div")).addClass("right-account").addClass("pie-chart").appendTo("div.consumer-purchase-motivators-wrapper");
+        $(document.createElement("div")).addClass("right-account").addClass("pie-chart").appendTo("div.consumer-purchase-motivators-wrapper .dash-section-content");
     }
 
     function noData() {
@@ -540,9 +546,9 @@ jQuery(function($) {
             $socialContainer.append($wrap);
         });
 
-        $('.social-category').wrapAll($("<div />"));
+        $('.social-category').wrapAll($("<div class='wrap'/>"));
 
-        $(document.createElement("div")).addClass("social-analytics-hashtag").text(HASHTAG).appendTo("div.social-analytics");
+
         $(document.createElement("a")).addClass("more").attr('href', 'http://keyhole.co/realtime/' + TRACKER + '/' + HASHTAG).attr('target', '_blank').text('View All Data').appendTo("div.social-analytics");
     }
 
