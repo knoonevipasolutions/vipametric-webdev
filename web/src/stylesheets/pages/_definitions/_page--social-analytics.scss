@@ -1,0 +1,99 @@
+#top_posts {
+    @include style-contentbox();
+    height: 400px;
+    overflow-y: scroll;
+    position: relative;
+    width: 50%;
+    display: inline-block;
+
+    .action {
+        .btn-more {
+            text-transform: uppercase;
+            padding: 10px;
+            display: block;
+            text-align: center;
+            font-family: $font-open-sans-semi-bold;
+        }
+    }
+
+    @include breakpoint($bp-mobile-landscape) {
+        padding-bottom: 0;
+    }
+}
+
+.post {
+    position: relative;
+    padding: 10px 0;
+
+    + .post {
+        border-top: 1px solid $color-grey-e2;
+    }
+
+    &:after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+
+    .post-info {
+        margin-bottom: 5px;
+        text-align: right;
+
+        &:after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+    }
+
+    .user-info {
+        float: left;
+
+        .handle,
+        .name {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        a.name {
+            font-size: 16px;
+        }
+
+        a.handle {
+            color: $color-grey-33;
+            font-family: $font-open-sans-bold;
+        }
+    }
+
+    .profile-pic {
+        float: left;
+        width: 50px;
+        height: 50px;
+
+        img {
+            max-width: 100%;
+            height: auto;
+            width: auto;
+        }
+    }
+
+    .go {
+        float: right;
+        font-family: $font-open-sans-italic;
+        margin-top: 5px;
+    }
+
+    .content {
+        margin-left: 60px;
+        padding-right: 35px;
+    }
+
+    .favorited {
+        position: absolute;
+        right: 0;
+        top: 35px;
+        background-color: $color--theme-accent;
+        color: $color-white;
+        padding: 3px 8px;
+    }
+}

@@ -24,7 +24,7 @@ jQuery(function($) {
             $twitterPosts[i].postType = "twitter";
         }
         for (var x = 0; x < $instagramPosts.length; x++) {
-            $instagramPosts[x].sortDate = moment($instagramPosts[x].created_time, 'X');
+            $instagramPosts[x].sortDate = $instagramPosts[x].created_time;
             $instagramPosts[x].postType = "instagram";
         }
 
@@ -45,7 +45,9 @@ jQuery(function($) {
         var $posts = $(posts);
         var $postHtml = $('<div class="post"></div>');
         var $postPicHtml = $('<div class="profile-pic"></div>');
+        var $postContentHtml = $('<div class="content"></div>');
         var $userInfoHtml = $('<div class="user-info"></div>');
+        var $postInfoHtml = $('<div class="post-info"></div>');
         var $favCountHtml = $('<div class="favorited"></div>');
         var $postDateHtml = $('<div class="date"></div>');
 
@@ -53,25 +55,40 @@ jQuery(function($) {
             var $post = $posts[idx];
             var $postCon = $postHtml.clone();
             var $postPic = $postPicHtml.clone();
+            var $postContentCon = $postContentHtml.clone();
             var $userInfo = $userInfoHtml.clone();
+            var $postInfo = $postInfoHtml.clone();
             var $favCount = $favCountHtml.clone();
-            var $postDate = $postDateHtml.clone();
+            var $postDateCon = $postDateHtml.clone();
 
             function handlePostData() {
-                var $postContent;
+                var postContent,
+                    postDate;
+
                 if ($post.postType == "twitter") {
-                    $postContent = $post.text;
+                    postContent = $post.text;
+                    if (postContent.length > 140) {
+                        postContent = postContent.substring(0, 140);
+                        postContent = postContent.concat("...");
+                    }
+                    postDate = moment($post.sortDate, 'X');
                 }
                 else {
-                    $postContent = $post.caption.text;
+                    postContent = $post.caption.text;
+                    if (postContent.length > 140) {
+                        postContent = postContent.substring(0, 140);
+                        postContent = postContent.concat("...");
+                    }
+                    postDate = moment($post.sortDate, 'X');
                 }
                 var favCount = $post.favorite_count ? $post.favorite_count : 0;
                 var rtCount = $post.retweet_count ? $post.retweet_count : 0;
-                var postDate = moment($post.sortDate, 'X');
 
                 $favCount.append(favCount + rtCount);
-                $postDate.append(postDate.format('MMM D'));
-                $postCon.append($favCount, $postDate, $postContent);
+                $postDateCon.append(postDate.format('MMM D'));
+                $postInfo.append($postDateCon);
+                $postContentCon.append(postContent);
+                $postCon.append($postContentCon, $favCount);
             }
 
             function handleUserData() {
@@ -86,27 +103,30 @@ jQuery(function($) {
                     if ($post.postType == "twitter") {
                         userHandle = $user.screen_name;
                         userName = $user.name;
-                        userURL = "/twitter.com/" + userHandle;
+                        userURL = "http://twitter.com/" + userHandle;
                         profilePicURL = $user.profile_image_url;
-                        $linkToPost = '<a class="go" href="/twitter.com/"' + userHandle + '/status/' + $post.id;
+                        $linkToPost = $('<a class="go" target="_blank" href="http://twitter.com/' + userHandle + '/status/' + $post.id_str + '">View Post</a>');
                     }
                     else {
                         userHandle = $user.username;
                         userName = $user.full_name;
-                        userURL = "/instagram.com/" + userHandle;
+                        userURL = "http://instagram.com/" + userHandle;
                         profilePicURL = $user.profile_picture;
-                        $linkToPost = '<a class="go" href="/instagram.com/p"' + $post.id;
+                        $linkToPost = $('<a class="go" target="_blank" href="' + $post.link + '">View Post</a>');
                     }
 
                     var $profilePic = $('<img src="' + profilePicURL + '" alt="' + userHandle + '" />');
                     var $userHandleHtml = $('<a class="handle" href="' + userURL + '" target="_blank">@' + userHandle + '</a>');
-                    var $userNameHtml = $('<a class="nane" href="' + userURL + '" target="_blank">' + userName + '</a>');
+                    var $userNameHtml = $('<a class="name" href="' + userURL + '" target="_blank">' + userName + '</a>');
 
                     $postPic.append($profilePic);
-                    $userInfo.append($userHandleHtml);
                     $userInfo.append($userNameHtml);
-                    $postCon.prepend($postPic, $userInfo);
+                    $userInfo.append($userHandleHtml);
+                    $postCon.prepend($postPic);
+                    $postInfo.prepend($userInfo);
+                    $postCon.prepend($postInfo);
                     $postCon.append($linkToPost);
+                    $postCon.addClass($post.postType);
                 }
             }
 
@@ -160,6 +180,8 @@ jQuery(function($) {
 
                 $content.addClass(CSS_LOADING_CLASS);
                 $btn.addClass('loading').text('');
+
+                $content.find(".action.next").remove();
 
                 prevOffset = nextOffset + 1;
                 nextOffset += POST_LISTING_LIMIT;
