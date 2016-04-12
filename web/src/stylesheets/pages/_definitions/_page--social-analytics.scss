@@ -1,10 +1,56 @@
-#top_posts {
+.post-header {
+    padding: 15px 25px 5px;
+    border-bottom: 1px solid $color-grey-e2;
+
+    &:after {
+        clear: both;
+        content: '';
+        display: block;
+    }
+
+    h1 {
+        margin-top: 0;
+    }
+
+    .legend {
+        float: right;
+        font-size: .75em;
+        padding: 5px 0;
+
+        .count {
+            font-family: $font-open-sans-italic;
+
+            span {
+                display: inline-block;
+                background-color: $color--theme-accent;
+                color: $color-white;
+                padding: 3px 8px;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+.top-post-tracker {
     @include style-contentbox();
-    height: 400px;
+    padding: 0;
+
+    @include breakpoint($bp-mobile-landscape) {
+        margin-top: 0;
+        padding: 0;
+    }
+
+    @include breakpoint($bp-tablets-portrait) {
+        width: 50%;
+        display: inline-block;
+    }
+}
+
+#top_posts {
+    height: 500px;
     overflow-y: scroll;
     position: relative;
-    width: 50%;
-    display: inline-block;
+    padding: 0 25px;
 
     .action {
         .btn-more {
@@ -15,11 +61,8 @@
             font-family: $font-open-sans-semi-bold;
         }
     }
-
-    @include breakpoint($bp-mobile-landscape) {
-        padding-bottom: 0;
-    }
 }
+
 
 .post {
     position: relative;
@@ -27,6 +70,31 @@
 
     + .post {
         border-top: 1px solid $color-grey-e2;
+    }
+
+    &.twitter {
+        &:before {
+            background-image: url("/_design/shared/twitter-glyph.png");
+        }
+    }
+
+    &.instagram {
+        &:before {
+            background-image: url("/_design/shared/instagram-glyph.png");
+        }
+    }
+
+    &:before {
+        content: '';
+        display: block;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        top: 15px;
+        right: 0;
     }
 
     &:after {
@@ -37,7 +105,6 @@
 
     .post-info {
         margin-bottom: 5px;
-        text-align: right;
 
         &:after {
             content: '';
@@ -47,8 +114,6 @@
     }
 
     .user-info {
-        float: left;
-
         .handle,
         .name {
             display: inline-block;
@@ -95,5 +160,21 @@
         background-color: $color--theme-accent;
         color: $color-white;
         padding: 3px 8px;
+    }
+
+    @include breakpoint($bp-tablets-portrait) {
+        &:before {
+            left: 0;
+            right: auto;
+        }
+
+        .post-info {
+            text-align: right;
+            padding-left: 25px;
+        }
+
+        .user-info {
+            float: left;
+        }
     }
 }
